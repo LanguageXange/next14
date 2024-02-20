@@ -3,8 +3,8 @@
 import Link from "next/link";
 import React from "react";
 import { usePathname } from "next/navigation";
-import { classNames } from "./utils/misc";
 import { AiFillBug } from "react-icons/ai";
+import { classNames } from "./utils/misc";
 
 const NavBar = () => {
   const pathName = usePathname();

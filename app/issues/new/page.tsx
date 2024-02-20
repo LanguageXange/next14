@@ -11,6 +11,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { createIssueSchema } from "@/app/validationSchema";
 import { z } from "zod";
 import ErrorMessage from "@/app/components/ErrorMessage";
+import Spinner from "@/app/components/Spinner";
 
 type FormInput = z.infer<typeof createIssueSchema>;
 
@@ -26,14 +27,17 @@ const NewIssuePage = () => {
   });
 
   const [err, setErr] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // console.log(errors);
   const onSubmit: SubmitHandler<FormInput> = async (data) => {
     try {
+      setIsSubmitting(true);
       await axios.post("/api/issues", data);
-      router.push("/issues");
+      router.push("/issues"); // we don't need to setIsSubmitting to false as we will redirect user to issues page
     } catch (error) {
       // console.log(error, "what is error");
+      setIsSubmitting(false);
       setErr("Oops ! something's wrong!");
     }
   };
@@ -61,7 +65,11 @@ const NewIssuePage = () => {
           )}
         />
 
-        <Button> Submit Issue</Button>
+        <Button disabled={isSubmitting}>
+          {" "}
+          Submit Issue
+          {isSubmitting && <Spinner />}
+        </Button>
       </form>
     </div>
   );
