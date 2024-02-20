@@ -1,3 +1,17 @@
+# Stack
+
+- NextJS 14 + TypeScript
+- Prisma + MySQL
+- Zod
+- TailwindCSS
+- Radix UI Theme
+- React SimpleMDE Editor + React Icons + React Hook Form
+- Axios
+
+## Next 14 & App Router
+
+https://nextjs.org/blog/next-14
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
